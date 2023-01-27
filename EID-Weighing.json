@@ -1,0 +1,468 @@
+[
+    {
+        "id": "285234eb0aa4b85e",
+        "type": "tab",
+        "label": "EID Weighing",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "9f8ca554beb48cd4",
+        "type": "function",
+        "z": "285234eb0aa4b85e",
+        "name": "Save Tag",
+        "func": "flow.set(\"eid\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9a21537d2a217c9c",
+        "type": "http in",
+        "z": "285234eb0aa4b85e",
+        "name": "",
+        "url": "/eid",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 80,
+        "y": 260,
+        "wires": [
+            [
+                "0b2b42148a58ba18",
+                "c087efe93dcceef0",
+                "1e8543b5f0fdab2a"
+            ]
+        ]
+    },
+    {
+        "id": "6d8878491732e7df",
+        "type": "http response",
+        "z": "285234eb0aa4b85e",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 90,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "0b2b42148a58ba18",
+        "type": "template",
+        "z": "285234eb0aa4b85e",
+        "name": "page",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head></head>\n    <body>\n        <h1>web hook endpoint</h1>\n    </body>\n</html>",
+        "x": 90,
+        "y": 300,
+        "wires": [
+            [
+                "6d8878491732e7df"
+            ]
+        ]
+    },
+    {
+        "id": "ae6ff69fbf4f70d4",
+        "type": "ui_date_picker",
+        "z": "285234eb0aa4b85e",
+        "name": "",
+        "label": "date",
+        "group": "d6f1c80f56219869",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 470,
+        "y": 220,
+        "wires": [
+            [
+                "22cc80a9929dc52c"
+            ]
+        ]
+    },
+    {
+        "id": "c087efe93dcceef0",
+        "type": "ui_text_input",
+        "z": "285234eb0aa4b85e",
+        "name": "",
+        "label": "Tag No.",
+        "tooltip": "",
+        "group": "d6f1c80f56219869",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 480,
+        "y": 260,
+        "wires": [
+            [
+                "9f8ca554beb48cd4"
+            ]
+        ]
+    },
+    {
+        "id": "e99730dc9119d403",
+        "type": "function",
+        "z": "285234eb0aa4b85e",
+        "name": "Save Weight",
+        "func": "flow.set(\"weight\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2cfe5850b0ee0519",
+        "type": "ui_text_input",
+        "z": "285234eb0aa4b85e",
+        "name": "",
+        "label": "Weight",
+        "tooltip": "",
+        "group": "d6f1c80f56219869",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "number",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 470,
+        "y": 300,
+        "wires": [
+            [
+                "e99730dc9119d403"
+            ]
+        ]
+    },
+    {
+        "id": "22cc80a9929dc52c",
+        "type": "function",
+        "z": "285234eb0aa4b85e",
+        "name": "Save Date",
+        "func": "flow.set(\"date\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4b85e7a1b16a8992",
+        "type": "ui_table",
+        "z": "285234eb0aa4b85e",
+        "group": "d6f1c80f56219869",
+        "name": "",
+        "order": 5,
+        "width": "6",
+        "height": "6",
+        "columns": [],
+        "outputs": 0,
+        "cts": false,
+        "x": 650,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "f8b2c4f0074c2c66",
+        "type": "ui_button",
+        "z": "285234eb0aa4b85e",
+        "name": "",
+        "group": "d6f1c80f56219869",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Save Weight",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 490,
+        "y": 340,
+        "wires": [
+            [
+                "4548629d97023643"
+            ]
+        ]
+    },
+    {
+        "id": "4548629d97023643",
+        "type": "function",
+        "z": "285234eb0aa4b85e",
+        "name": "Build Array",
+        "func": "var array = flow.get('csv') || [];\nvar Timestamp = flow.get(\"date\");\nvar eid = flow.get(\"eid\");\nvar weight = flow.get(\"weight\");\n\nTimestamp = new Date(Timestamp).toLocaleDateString('en-UK');\n\n//Time + Date formatting\nfunction padZero(i) {\n    return i < 10 ? \"0\" + i : i;\n}\nconst dateString = Timestamp;\nconst parts = dateString.split(\"/\");\nconst date = new Date(Number(parts[2]), Number(parts[1]) - 1, Number(parts[0]));\nconst newDateString = padZero(date.getDate()) + '-' + (padZero(date.getMonth() + 1)) + '-' + date.getFullYear();\n\n\n\narray.push({ date: newDateString, eid: eid, weight: weight });\nflow.set('csv', array);\n\nmsg.payload = array;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 340,
+        "wires": [
+            [
+                "e1aacd9d64aa121e"
+            ]
+        ]
+    },
+    {
+        "id": "6d299375868f5cde",
+        "type": "inject",
+        "z": "285234eb0aa4b85e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "01 00 * * *",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 330,
+        "y": 220,
+        "wires": [
+            [
+                "ae6ff69fbf4f70d4"
+            ]
+        ]
+    },
+    {
+        "id": "e1aacd9d64aa121e",
+        "type": "delay",
+        "z": "285234eb0aa4b85e",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 490,
+        "y": 400,
+        "wires": [
+            [
+                "4b85e7a1b16a8992"
+            ]
+        ]
+    },
+    {
+        "id": "bf1acf355cb196be",
+        "type": "change",
+        "z": "285234eb0aa4b85e",
+        "name": "",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "csv",
+                "pt": "flow"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "[]",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 780,
+        "y": 500,
+        "wires": [
+            [
+                "4b85e7a1b16a8992"
+            ]
+        ]
+    },
+    {
+        "id": "648480b352b54061",
+        "type": "ui_button",
+        "z": "285234eb0aa4b85e",
+        "name": "",
+        "group": "d6f1c80f56219869",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Clear",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "Clear all!",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 470,
+        "y": 460,
+        "wires": [
+            [
+                "8d1dda1c3034b37f"
+            ]
+        ]
+    },
+    {
+        "id": "8d1dda1c3034b37f",
+        "type": "ui_toast",
+        "z": "285234eb0aa4b85e",
+        "position": "dialog",
+        "displayTime": "0",
+        "highlight": "",
+        "sendall": false,
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "Cancel",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 490,
+        "y": 500,
+        "wires": [
+            [
+                "8cc35d8c8450fbb3"
+            ]
+        ]
+    },
+    {
+        "id": "8cc35d8c8450fbb3",
+        "type": "switch",
+        "z": "285234eb0aa4b85e",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "OK",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 630,
+        "y": 500,
+        "wires": [
+            [
+                "bf1acf355cb196be"
+            ]
+        ]
+    },
+    {
+        "id": "1e8543b5f0fdab2a",
+        "type": "ui_toast",
+        "z": "285234eb0aa4b85e",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "green",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 290,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "0b88caabae16d7af",
+        "type": "ui_button",
+        "z": "285234eb0aa4b85e",
+        "name": "",
+        "group": "d6f1c80f56219869",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Send to ICBF",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 480,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d6f1c80f56219869",
+        "type": "ui_group",
+        "name": "Weigh",
+        "tab": "4b3405bb66970db5",
+        "order": 1,
+        "disp": false,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "4b3405bb66970db5",
+        "type": "ui_tab",
+        "name": "Weigh Animal",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
