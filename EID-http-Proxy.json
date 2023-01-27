@@ -1,0 +1,102 @@
+[
+    {
+        "id": "7100f2f513739339",
+        "type": "tab",
+        "label": "EID",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "28e9f716d1386d87",
+        "type": "http request",
+        "z": "7100f2f513739339",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://192.168.1.9:1880/eid",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 370,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7eb74530cf83b1a1",
+        "type": "serial in",
+        "z": "7100f2f513739339",
+        "d": true,
+        "name": "",
+        "serial": "84d503d3796c0a2f",
+        "x": 210,
+        "y": 100,
+        "wires": [
+            [
+                "d5dfdcd4834bfa6d"
+            ]
+        ]
+    },
+    {
+        "id": "2ba1b023f4cce960",
+        "type": "debug",
+        "z": "7100f2f513739339",
+        "name": "debug 21",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "d5dfdcd4834bfa6d",
+        "type": "function",
+        "z": "7100f2f513739339",
+        "name": "Read Tag",
+        "func": "var str = msg.payload;\n//msg.payload = null;\nstr = str.split(\" M \");\nif (str[1] != undefined) {\n    msg.payload = str[1].trim();\n    node.send(msg);\n}\nreturn ;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 100,
+        "wires": [
+            [
+                "2ba1b023f4cce960",
+                "28e9f716d1386d87"
+            ]
+        ]
+    },
+    {
+        "id": "84d503d3796c0a2f",
+        "type": "serial-port",
+        "serialport": "COM4",
+        "serialbaud": "9600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "15",
+        "bin": "false",
+        "out": "interbyte",
+        "addchar": "",
+        "responsetimeout": "10000"
+    }
+]
